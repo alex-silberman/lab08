@@ -96,12 +96,12 @@ void WriteResults(ofstream &outf, UndergradStudents us[], int size) {
     outf.open(OUTPUTFILE);
 
     outf << "These are the results sorted by last name:" << endl;
-
+    outf << fixed << setprecision(2);
     for (int i = 0; i < size; i++) { // write student's information and GPA to the file
 
         float avg = (us[i].gpa1 + us[i].gpa2 + us[i].gpa3 + us[i].gpa4) / 4.0;
 
-        avg = int(avg * 100 + 0.5) / 100.0;
+        avg = int((avg + 0.00001) * 100 + 0.5) / 100.0;
 
         outf << "ID# " << us[i].studentID << ": "
              << us[i].lastName << ": "
