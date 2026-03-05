@@ -1,8 +1,9 @@
 // file: ll_functions.cpp
 // had to delete #include "ll_headers.h" it would not compile
 #include <string>
-#include<iostream> //getting errors without
-using namespace std; //getting errors without
+#include "ll_headers.h"
+//#include<iostream> //getting errors without
+//using namespace std; //getting errors without
 // Used in the function createLL()
 // This function is started for you correctly - you have to complete it.
 //   Use the comments to help you figure out what to do.
