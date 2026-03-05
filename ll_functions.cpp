@@ -1,9 +1,8 @@
 // file: ll_functions.cpp
 // had to delete #include "ll_headers.h" it would not compile
 #include <string>
-#include "ll_headers.h"
-//#include<iostream> //getting errors without
-//using namespace std; //getting errors without
+#include <iostream> //getting errors without
+using namespace std; //getting errors without
 // Used in the function createLL()
 // This function is started for you correctly - you have to complete it.
 //   Use the comments to help you figure out what to do.
@@ -60,22 +59,39 @@ void printLL(LinkNodePtr h) {
         cout << "This list is empty." << endl;
         return;
     }
+
+    cout << "Printing the list:" << endl;
+
     LinkNodePtr current = h;
+    int index = 0;
+
     while (current != nullptr) {
-        cout << current->name << ", " << current->number << endl;
+        cout << "Node #" << index << ": "
+             << current->name << ", "
+             << current->number << endl;
+
         current = current->link;
+        index++;
     }
 
+    cout << "--------" << endl;
 }
+
+
 
 void insertNodeAfter(LinkNodePtr& h) { //added & since it didnt align
     // Incomplete function - student must complete
     int pos;
-    cout << "Enter node position to insert after (negative number to exit): ";
+    cout << "Enter node position to insert new node after (enter negative number to exit): ";
     cin >> pos;
 
     if (pos < 0)
         return;
+
+    if (h == nullptr) {
+        cout << "Cannot insert in a non-existing link." << endl;
+        return;
+    }
 
     LinkNodePtr current = h;
     int index = 0;
@@ -93,7 +109,7 @@ void insertNodeAfter(LinkNodePtr& h) { //added & since it didnt align
     string nom;
     int num;
 
-    cout << "Enter data (name then number): ";
+    cout << "Enter data (name, then number): ";
     cin >> nom >> num;
 
     LinkNodePtr newNode = new LinkNode;
@@ -103,14 +119,16 @@ void insertNodeAfter(LinkNodePtr& h) { //added & since it didnt align
 
     newNode->link = current->link;
     current->link = newNode;
-
 }
-
 
 
 
 void findMax(LinkNodePtr h) {
     // Incomplete function - student must complete
+    if (h == nullptr) {
+    cout << "This list is empty." << endl;
+    return;
+    }
     int max = h->number;
 
     while (h != nullptr) {
@@ -128,6 +146,10 @@ void findMax(LinkNodePtr h) {
 
 void findMin(LinkNodePtr h) {
     // Incomplete function - student must complete
+    if (h == nullptr) {
+    cout << "This list is empty." << endl;
+    return;
+    }
     int min = h->number;
 
     while (h != nullptr) {
